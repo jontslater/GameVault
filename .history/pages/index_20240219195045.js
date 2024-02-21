@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
+import { getBooks } from '../api/bookData';
+import BookCard from '../components/BookCard';
 import { getGame } from '../api/games';
-import GameCard from '../components/GameCard';
 
 function Home() {
   const { user } = useAuth();
@@ -18,16 +19,13 @@ function Home() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/game/new" passHref>
-        <Button>Add Game</Button>
+      <Link href="/book/new" passHref>
+        <Button>Add A Book</Button>
       </Link>
       <div className="d-flex flex-wrap">
+        {/* TODO: map over books here using BookCard component */}
         {games.map((game) => (
-          <GameCard
-            key={game.firebaseKey}
-            gameObj={game}
-            onUpdate={getAllTheGames}
-          />
+          <BookCard key={game.Firebasekey} gameObj={game} onUpdate={getAllTheGames} />
         ))}
       </div>
 

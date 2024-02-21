@@ -18,16 +18,13 @@ function Home() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/game/new" passHref>
-        <Button>Add Game</Button>
+      <Link href="/book/new" passHref>
+        <Button>Add A Book</Button>
       </Link>
       <div className="d-flex flex-wrap">
+        {/* TODO: map over books here using BookCard component */}
         {games.map((game) => (
-          <GameCard
-            key={game.firebaseKey}
-            gameObj={game}
-            onUpdate={getAllTheGames}
-          />
+          <GameCard key={game.Firebasekey} gameObj={game} onUpdate={getAllTheGames} />
         ))}
       </div>
 

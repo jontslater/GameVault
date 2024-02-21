@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { getGame } from '../api/games';
 import GameCard from '../components/GameCard';
@@ -18,9 +16,7 @@ function Home() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/game/new" passHref>
-        <Button>Add Game</Button>
-      </Link>
+      <p>{user.displayName}</p>
       <div className="d-flex flex-wrap">
         {games.map((game) => (
           <GameCard

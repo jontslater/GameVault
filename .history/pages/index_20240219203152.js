@@ -18,7 +18,8 @@ function Home() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/game/new" passHref>
+      <p>{user.name}</p>
+      <Link href="/book/new" passHref>
         <Button>Add Game</Button>
       </Link>
       <div className="d-flex flex-wrap">
