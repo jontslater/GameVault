@@ -35,7 +35,7 @@ function GameCard({ gameObj, onUpdate }) {
         <Link href={`/game/${gameObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
-        <Link href={`/game/edit/${gameObj.firebaseKey}`} passHref>
+        <Link href={`/book/edit/${gameObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisGame} className="m-2">
