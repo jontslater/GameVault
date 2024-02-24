@@ -17,7 +17,7 @@ function GameCard({ gameObj, onUpdate }) {
         <Card.Img variant="top" src={gameObj.coverPhoto} alt={gameObj.gameTitle} style={{ height: '400px' }} />
         <Card.Title>{gameObj.gameTitle}</Card.Title>
         <Card.Title>{gameObj.gamePlatform}</Card.Title>
-        <p className="card-text bold">{gameObj.favorite && <span>Favorite<br /></span> }</p>
+        <p className="card-text bold">{gameObj.favorite && <span>FAVORITE<br /></span> }</p>
         <Button variant="primary" href={gameObj.youTubeVideo} target="_blank" rel="noopener noreferrer">
           YouTube Video
         </Button>

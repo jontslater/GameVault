@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getGame } from '../api/games';
 import GameCard from '../components/GameCard';
+import { getPlatforms } from '../api/platforms';
+// import { getPlatforms } from '../api/platforms';
 
 function Home() {
   const { user } = useAuth();

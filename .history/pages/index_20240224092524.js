@@ -5,16 +5,29 @@ import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getGame } from '../api/games';
 import GameCard from '../components/GameCard';
+import { getPlatforms } from '../api/platforms';
+// import { getPlatforms } from '../api/platforms';
 
 function Home() {
   const { user } = useAuth();
   const [games, setGames] = useState([]);
 
-  const getAllTheGames = async () => {
-    getGame(user.uid).then(setGames);
-  };
-
   useEffect(() => {
+    const getAllTheGames = async () => {
+      try {
+        const gamesData = await getGame(user.uid);
+        const gamesWithPlatforms = await Promise.all(
+          gamesData.map(async (game) => {
+            const platformData = await getPlatforms(game.gamePlatform).catch(() => null);
+            return { ...game, platformData };
+          }),
+        );
+        setGames(gamesWithPlatforms);
+      } catch (error) {
+        console.error('Error fetching games data:', error);
+      }
+    };
+
     getAllTheGames();
   }, [user.uid]);
 

@@ -16,8 +16,7 @@ function GameCard({ gameObj, onUpdate }) {
       <Card.Body>
         <Card.Img variant="top" src={gameObj.coverPhoto} alt={gameObj.gameTitle} style={{ height: '400px' }} />
         <Card.Title>{gameObj.gameTitle}</Card.Title>
-        <Card.Title>{gameObj.gamePlatform}</Card.Title>
-        <p className="card-text bold">{gameObj.favorite && <span>Favorite<br /></span> }</p>
+        <Card.Title>{gameObj.platformData ? gameObj.platformData.console : 'Unknown'}</Card.Title>
         <Button variant="primary" href={gameObj.youTubeVideo} target="_blank" rel="noopener noreferrer">
           YouTube Video
         </Button>
@@ -36,10 +35,11 @@ GameCard.propTypes = {
   gameObj: PropTypes.shape({
     gameTitle: PropTypes.string,
     youTubeVideo: PropTypes.string,
-    gamePlatform: PropTypes.string,
     firebaseKey: PropTypes.string,
     coverPhoto: PropTypes.string,
-    favorite: PropTypes.string,
+    platformData: PropTypes.shape({
+      console: PropTypes.string,
+    }),
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

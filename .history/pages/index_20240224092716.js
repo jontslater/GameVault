@@ -5,18 +5,31 @@ import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getGame } from '../api/games';
 import GameCard from '../components/GameCard';
+import { getPlatforms } from '../api/platforms';
+// import { getPlatforms } from '../api/platforms';
 
 function Home() {
   const { user } = useAuth();
   const [games, setGames] = useState([]);
 
   const getAllTheGames = async () => {
-    getGame(user.uid).then(setGames);
+    try {
+      const gamesData = await getGame(user.uid);
+      const gamesWithPlatforms = await Promise.all(
+        gamesData.map(async (game) => {
+          const platformData = await getPlatforms(game.gamePlatform);
+          return { ...game, platformData };
+        }),
+      );
+      setGames(gamesWithPlatforms);
+    } catch (error) {
+      console.error('Error fetching games data:', error);
+    }
   };
 
   useEffect(() => {
     getAllTheGames();
-  }, [user.uid]);
+  }, [user.uid]); // Fetch games when the user ID changes
 
   return (
     <div className="text-center my-4">
@@ -28,7 +41,7 @@ function Home() {
           <GameCard
             key={game.firebaseKey}
             gameObj={game}
-            onUpdate={() => getAllTheGames()}
+            onUpdate={getAllTheGames} // Pass getAllTheGames as a prop
           />
         ))}
       </div>
