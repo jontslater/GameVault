@@ -9,7 +9,7 @@ import viewGameDetails from '../api/mergedData';
 function Home() {
   const { user } = useAuth();
   const [games, setGames] = useState([]);
-  const [platforms, setPlatforms] = useState([]);
+  const [consoles, setConsoles] = useState([]);
 
   const getAllTheGames = async () => {
     try {
@@ -17,7 +17,8 @@ function Home() {
       setGames(gamesData);
 
       const platformsData = await viewGameDetails(user.uid);
-      setPlatforms(platformsData);
+      const consolesData = platformsData.map((platform) => platform.console);
+      setConsoles(consolesData);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -33,17 +34,21 @@ function Home() {
         <Button>Add Game</Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {games.map((game) => {
-          const platform = platforms.map((p) => p.firebaseKey === game.gamePlatform);
-          return (
-            <GameCard
-              key={game.firebaseKey}
-              gameObj={game}
-              onUpdate={getAllTheGames}
-              platform={platform}
-            />
-          );
-        })}
+        {games.map((game) => (
+          <GameCard
+            key={game.firebaseKey}
+            gameObj={game}
+            onUpdate={getAllTheGames}
+          />
+        ))}
+      </div>
+      <div>
+        <h2>Consoles:</h2>
+        <ul>
+          {consoles.map((console) => (
+            <li key={console}>{console}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

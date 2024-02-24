@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getGame } from '../api/games';
-import GameCard from '../components/GameCard';
+import GameCard from './GameCard';
 import viewGameDetails from '../api/mergedData';
 
 function Home() {
@@ -34,7 +34,7 @@ function Home() {
       </Link>
       <div className="d-flex flex-wrap">
         {games.map((game) => {
-          const platform = platforms.map((p) => p.firebaseKey === game.gamePlatform);
+          const platform = platforms.find((p) => p.firebaseKey === game.gamePlatform);
           return (
             <GameCard
               key={game.firebaseKey}

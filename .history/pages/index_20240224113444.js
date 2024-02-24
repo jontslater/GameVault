@@ -33,17 +33,14 @@ function Home() {
         <Button>Add Game</Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {games.map((game) => {
-          const platform = platforms.map((p) => p.firebaseKey === game.gamePlatform);
-          return (
-            <GameCard
-              key={game.firebaseKey}
-              gameObj={game}
-              onUpdate={getAllTheGames}
-              platform={platform}
-            />
-          );
-        })}
+        {games.map((game) => (
+          <GameCard
+            key={game.firebaseKey}
+            gameObj={game}
+            onUpdate={() => getAllTheGames()}
+            platforms={platforms}
+          />
+        ))}
       </div>
     </div>
   );

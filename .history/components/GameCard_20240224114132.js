@@ -15,10 +15,12 @@ function GameCard({ gameObj, onUpdate }) {
   };
 
   useEffect(() => {
-    viewGameDetails(gameObj.firebaseKey).then((data) => {
+    viewGameDetails().then((data) => {
       setPlatform(data.platform);
+    }).catch((error) => {
+      console.error('Error:', error);
     });
-  }, [gameObj.firebaseKey]);
+  }, []);
 
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
@@ -48,7 +50,7 @@ GameCard.propTypes = {
     gameTitle: PropTypes.string.isRequired,
     youTubeVideo: PropTypes.string.isRequired,
     gamePlatform: PropTypes.string.isRequired,
-    firebaseKey: PropTypes.string,
+    firebaseKey: PropTypes.string.isRequired,
     coverPhoto: PropTypes.string.isRequired,
     favorite: PropTypes.bool.isRequired,
   }).isRequired,

@@ -4,20 +4,20 @@ import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getGame } from '../api/games';
 import GameCard from '../components/GameCard';
-import viewGameDetails from '../api/mergedData';
+// import viewGameDetails from '../api/mergedData';
 
 function Home() {
   const { user } = useAuth();
   const [games, setGames] = useState([]);
-  const [platforms, setPlatforms] = useState([]);
+  // const [platforms, setPlatforms] = useState([]);
 
   const getAllTheGames = async () => {
     try {
       const gamesData = await getGame(user.uid);
       setGames(gamesData);
 
-      const platformsData = await viewGameDetails(user.uid);
-      setPlatforms(platformsData);
+      // const platformsData = await viewGameDetails(user.uid);
+      // setPlatforms(platformsData);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -33,17 +33,14 @@ function Home() {
         <Button>Add Game</Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {games.map((game) => {
-          const platform = platforms.map((p) => p.firebaseKey === game.gamePlatform);
-          return (
-            <GameCard
-              key={game.firebaseKey}
-              gameObj={game}
-              onUpdate={getAllTheGames}
-              platform={platform}
-            />
-          );
-        })}
+        {games.map((game) => (
+          <GameCard
+            key={game.firebaseKey}
+            gameObj={game}
+            onUpdate={() => getAllTheGames()}
+            // platforms={platforms}
+          />
+        ))}
       </div>
     </div>
   );

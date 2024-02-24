@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
@@ -9,18 +10,11 @@ import viewGameDetails from '../api/mergedData';
 function Home() {
   const { user } = useAuth();
   const [games, setGames] = useState([]);
-  const [platforms, setPlatforms] = useState([]);
+  const [console, setConsole] = userState([]);
 
   const getAllTheGames = async () => {
-    try {
-      const gamesData = await getGame(user.uid);
-      setGames(gamesData);
-
-      const platformsData = await viewGameDetails(user.uid);
-      setPlatforms(platformsData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+    getGame(user.uid).then(setGames);
+    viewGameDetails(user.uid).then();
   };
 
   useEffect(() => {
@@ -33,17 +27,13 @@ function Home() {
         <Button>Add Game</Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {games.map((game) => {
-          const platform = platforms.map((p) => p.firebaseKey === game.gamePlatform);
-          return (
-            <GameCard
-              key={game.firebaseKey}
-              gameObj={game}
-              onUpdate={getAllTheGames}
-              platform={platform}
-            />
-          );
-        })}
+        {games.map((game) => (
+          <GameCard
+            key={game.firebaseKey}
+            gameObj={game}
+            onUpdate={() => getAllTheGames()}
+          />
+        ))}
       </div>
     </div>
   );

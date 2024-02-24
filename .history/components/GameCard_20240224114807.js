@@ -17,6 +17,8 @@ function GameCard({ gameObj, onUpdate }) {
   useEffect(() => {
     viewGameDetails(gameObj.firebaseKey).then((data) => {
       setPlatform(data.platform);
+    }).catch((error) => {
+      console.error('Error:', error);
     });
   }, [gameObj.firebaseKey]);
 
@@ -25,9 +27,9 @@ function GameCard({ gameObj, onUpdate }) {
       <Card.Body>
         <Card.Img variant="top" src={gameObj.coverPhoto} alt={gameObj.gameTitle} style={{ height: '400px' }} />
         <Card.Title>{gameObj.gameTitle}</Card.Title>
-        {platform && (
-          <p>{platform.console}</p>
-        )}
+
+        <p>{platform.console}</p>
+
         <p className="card-text bold">{gameObj.favorite && <span>Favorite<br /></span>}</p>
         <Button variant="primary" href={gameObj.youTubeVideo} target="_blank" rel="noopener noreferrer">
           YouTube Video
@@ -48,7 +50,7 @@ GameCard.propTypes = {
     gameTitle: PropTypes.string.isRequired,
     youTubeVideo: PropTypes.string.isRequired,
     gamePlatform: PropTypes.string.isRequired,
-    firebaseKey: PropTypes.string,
+    firebaseKey: PropTypes.string.isRequired,
     coverPhoto: PropTypes.string.isRequired,
     favorite: PropTypes.bool.isRequired,
   }).isRequired,

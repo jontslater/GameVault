@@ -19,7 +19,7 @@ function Home() {
       const platformsData = await viewGameDetails(user.uid);
       setPlatforms(platformsData);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error();
     }
   };
 
@@ -34,7 +34,7 @@ function Home() {
       </Link>
       <div className="d-flex flex-wrap">
         {games.map((game) => {
-          const platform = platforms.map((p) => p.firebaseKey === game.gamePlatform);
+          const platform = platforms.find((p) => p.firebaseKey === game.gamePlatform);
           return (
             <GameCard
               key={game.firebaseKey}

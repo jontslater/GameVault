@@ -6,7 +6,7 @@ import { deleteSingleGame } from '../api/games';
 import viewGameDetails from '../api/mergedData';
 
 function GameCard({ gameObj, onUpdate }) {
-  const [platform, setPlatform] = useState();
+  const [platform, setPlatform] = useState(null);
 
   const deleteThisGame = () => {
     if (window.confirm(`Delete ${gameObj.gameTitle}?`)) {
@@ -17,6 +17,8 @@ function GameCard({ gameObj, onUpdate }) {
   useEffect(() => {
     viewGameDetails(gameObj.firebaseKey).then((data) => {
       setPlatform(data.platform);
+    }).catch((error) => {
+      console.error('Error:', error);
     });
   }, [gameObj.firebaseKey]);
 

@@ -17,7 +17,7 @@ function GameCard({ gameObj, onUpdate }) {
   useEffect(() => {
     viewGameDetails(gameObj.firebaseKey).then((data) => {
       setPlatform(data.platform);
-    });
+    }).catch();
   }, [gameObj.firebaseKey]);
 
   return (

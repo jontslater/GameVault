@@ -17,7 +17,7 @@ function GameCard({ gameObj, onUpdate }) {
   useEffect(() => {
     viewGameDetails(gameObj.firebaseKey).then((data) => {
       setPlatform(data.platform);
-    });
+    }).catch();
   }, [gameObj.firebaseKey]);
 
   return (
@@ -48,7 +48,7 @@ GameCard.propTypes = {
     gameTitle: PropTypes.string.isRequired,
     youTubeVideo: PropTypes.string.isRequired,
     gamePlatform: PropTypes.string.isRequired,
-    firebaseKey: PropTypes.string,
+    firebaseKey: PropTypes.string.isRequired,
     coverPhoto: PropTypes.string.isRequired,
     favorite: PropTypes.bool.isRequired,
   }).isRequired,
