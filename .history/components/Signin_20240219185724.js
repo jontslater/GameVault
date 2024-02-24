@@ -11,11 +11,13 @@ function Signin() {
         padding: '30px',
         maxWidth: '400px',
         margin: '0 auto',
+        backgroundColor: 'black',
       }}
     >
-      <h1>Right This way</h1>
+      <h1>Hi there!</h1>
+      <p>Click the button below to login!</p>
       <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Click me!
+        Sign In
       </Button>
     </div>
   );

@@ -14,8 +14,9 @@ function Signin() {
       }}
     >
       <h1>Right This way</h1>
+      <p>Click below</p>
       <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Click me!
+        Sign In
       </Button>
     </div>
   );
