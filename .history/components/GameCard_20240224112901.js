@@ -6,7 +6,7 @@ import { deleteSingleGame } from '../api/games';
 import viewGameDetails from '../api/mergedData';
 
 function GameCard({ gameObj, onUpdate }) {
-  const [platform, setPlatform] = useState();
+  const [platform, setPlatform] = useState(null);
 
   const deleteThisGame = () => {
     if (window.confirm(`Delete ${gameObj.gameTitle}?`)) {
@@ -17,6 +17,8 @@ function GameCard({ gameObj, onUpdate }) {
   useEffect(() => {
     viewGameDetails(gameObj.firebaseKey).then((data) => {
       setPlatform(data.platform);
+    }).catch((error) => {
+      console.error('Error:', error);
     });
   }, [gameObj.firebaseKey]);
 
@@ -26,7 +28,7 @@ function GameCard({ gameObj, onUpdate }) {
         <Card.Img variant="top" src={gameObj.coverPhoto} alt={gameObj.gameTitle} style={{ height: '400px' }} />
         <Card.Title>{gameObj.gameTitle}</Card.Title>
         {platform && (
-          <p>{platform.console}</p>
+          <p>Console: {platform.console}</p>
         )}
         <p className="card-text bold">{gameObj.favorite && <span>Favorite<br /></span>}</p>
         <Button variant="primary" href={gameObj.youTubeVideo} target="_blank" rel="noopener noreferrer">

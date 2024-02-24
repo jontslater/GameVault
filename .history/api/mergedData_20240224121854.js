@@ -10,7 +10,7 @@ const viewGameDetails = (gameFirebaseKey) => new Promise((resolve, reject) => {
           const mergedData = { ...gameObject, platform: platformObject };
           resolve(mergedData);
         })
-        .catch(() => reject());
+        .catch((error) => reject(error));
     })
     .catch(() => reject());
 });

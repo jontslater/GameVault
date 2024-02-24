@@ -9,7 +9,6 @@ import viewGameDetails from '../api/mergedData';
 function Home() {
   const { user } = useAuth();
   const [games, setGames] = useState([]);
-  const [platforms, setPlatforms] = useState([]);
 
   const getAllTheGames = async () => {
     try {
@@ -18,9 +17,7 @@ function Home() {
 
       const platformsData = await viewGameDetails(user.uid);
       setPlatforms(platformsData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+    } catch (error)
   };
 
   useEffect(() => {
@@ -33,17 +30,13 @@ function Home() {
         <Button>Add Game</Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {games.map((game) => {
-          const platform = platforms.map((p) => p.firebaseKey === game.gamePlatform);
-          return (
-            <GameCard
-              key={game.firebaseKey}
-              gameObj={game}
-              onUpdate={getAllTheGames}
-              platform={platform}
-            />
-          );
-        })}
+        {games.map((game) => (
+          <GameCard
+            key={game.firebaseKey}
+            gameObj={game}
+            onUpdate={getAllTheGames}
+          />
+        ))}
       </div>
     </div>
   );
