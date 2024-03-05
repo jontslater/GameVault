@@ -1,0 +1,155 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+
+html,
+body {
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4bdd888b-fe5c-4358-8c46-5362c7ce3154/dehn7hz-56d75669-c27f-4d2b-8e30-91dc2c542e4c.jpg/v1/fill/w_1192,h_670,q_70,strp/cool_gaming_background_4k_by_skullbreaker000_dehn7hz-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvNGJkZDg4OGItZmU1Yy00MzU4LThjNDYtNTM2MmM3Y2UzMTU0XC9kZWhuN2h6LTU2ZDc1NjY5LWMyN2YtNGQyYi04ZTMwLTkxZGMyYzU0MmU0Yy5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.oV9fk5Nb0ps6-6_Omk6AfhkNvdqDyQRvV_hLyys1S6Q');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: white; /* Set text color to white for better visibility */
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #88effd;
+}
+
+#starID-0,
+#starID-1,
+#starID-2,
+#starID-3,
+#starID-4 {
+  display: none;
+}
+
+.stars{
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.card {
+  width: 200px; /* Adjust the width as needed */
+  height: auto;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with 80% opacity */
+  color: white; /* Text color */
+  overflow: hidden; /* Ensure content does not overflow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid black;
+}
+
+.card-img-top {
+  object-fit: contain; /* Fit the image inside the card without stretching */
+  height: 150px; /* Adjust the height of the image */
+  border-top-left-radius: 10px; /* Round the top left corner */
+  border-top-right-radius: 10px; /* Round the top right corner */
+}
+
+.card-body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.btn {
+  align-self: flex-end; /* Align buttons to the bottom of the card */
+}
+
+.youtube-button {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.youtube-button:hover {
+  background-color: #333;
+  border-color: #333;
+}
+
+/* Existing styles */
+
+.action-button {
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.action-button:hover {
+  opacity: 0.8;
+}
+
+/* Styles for specific buttons */
+.action-button.info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: white;
+}
+
+.action-button.info:hover {
+  background-color: #117a8b;
+  border-color: #117a8b;
+}
+
+.action-button.warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: white;
+}
+
+.action-button.warning:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+}
+
+.action-button.danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+.action-button.danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+.btn-youtube {
+  border: 1px solid white;
+  color: red;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
