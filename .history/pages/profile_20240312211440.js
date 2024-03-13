@@ -49,9 +49,8 @@ export default function Profile() {
                 style={{ width: '112.5px', height: '112.5px', borderRadius: '50%' }}
               />
             </div>
-            <p>{userDetails[0].gamertag}</p>
             <p>{userDetails[0].blurb}</p>
-
+            <p>{userDetails[0].gamertag}</p>
             <Button variant="warning" className="action-button" onClick={handleEditUserClick}>
               Edit User
             </Button>

@@ -28,30 +28,27 @@ export default function Profile() {
   };
 
   return (
-    <Card style={{ width: '30rem' }}>
+    <Card style={{ width: '40rem', margin: 'auto', marginTop: '20px' }}>
       <Card.Body>
-        {Object.keys(userDetails).length > 0 && (
+        <Button variant="info" className="action-button" onClick={handleAddUserClick}>
+          Add User
+        </Button>
+        {userDetails.length > 0 && (
           <>
-            <Button
-              variant="info"
-              className="action-button"
-              onClick={handleAddUserClick}
-              style={{ display: userDetails.length > 0 ? 'none' : 'inline-block' }}
-            >
-              Add User
-            </Button>
-            <div />
-            <div>
+            <div style={{ display: 'flex', marginBottom: '10px' }}>
               <img
                 src={user?.photoURL}
                 className="proPic"
                 alt="user"
-                style={{ width: '112.5px', height: '112.5px', borderRadius: '50%' }}
+                style={{
+                  width: '112.5px', height: '112.5px', borderRadius: '50%', marginRight: '20px',
+                }}
               />
+              <div>
+                <p>{userDetails[0].blurb}</p>
+                <p>{userDetails[0].gamertag}</p>
+              </div>
             </div>
-            <p>{userDetails[0].gamertag}</p>
-            <p>{userDetails[0].blurb}</p>
-
             <Button variant="warning" className="action-button" onClick={handleEditUserClick}>
               Edit User
             </Button>

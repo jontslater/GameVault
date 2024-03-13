@@ -28,35 +28,27 @@ export default function Profile() {
   };
 
   return (
-    <Card style={{ width: '30rem' }}>
+    <Card className="p-4">
       <Card.Body>
-        {Object.keys(userDetails).length > 0 && (
-          <>
-            <Button
-              variant="info"
-              className="action-button"
-              onClick={handleAddUserClick}
-              style={{ display: userDetails.length > 0 ? 'none' : 'inline-block' }}
-            >
-              Add User
-            </Button>
-            <div />
-            <div>
-              <img
-                src={user?.photoURL}
-                className="proPic"
-                alt="user"
-                style={{ width: '112.5px', height: '112.5px', borderRadius: '50%' }}
-              />
-            </div>
-            <p>{userDetails[0].gamertag}</p>
-            <p>{userDetails[0].blurb}</p>
-
-            <Button variant="warning" className="action-button" onClick={handleEditUserClick}>
+        {!userDetails.length && (
+          <Button variant="info" className="action-button" onClick={handleAddUserClick}>
+            Add User
+          </Button>
+        )}
+        <div className="d-flex align-items-center">
+          <img src={user?.photoURL} className="proPic" alt="user" style={{ width: '112.5px', borderRadius: '50%', marginRight: '20px' }} />
+          <div>
+            {userDetails.length > 0 && (
+              <>
+                <p>{userDetails[0].blurb}</p>
+                <p>{userDetails[0].gamertag}</p>
+              </>
+            )}
+            <Button variant="warning" className="action-button mt-3" onClick={handleEditUserClick}>
               Edit User
             </Button>
-          </>
-        )}
+          </div>
+        </div>
       </Card.Body>
     </Card>
   );
