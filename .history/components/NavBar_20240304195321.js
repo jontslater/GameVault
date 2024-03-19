@@ -22,13 +22,8 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
- jsstretch2
-            <Link passHref href="/profile">
-              <Nav.Link>Profile</Nav.Link>
-
             <Link href="/suggestedGame" passHref>
-              <Nav.Link>Suggest Game</Nav.Link>
-> jsstretch1
+              <Button>Suggest Game</Button>
             </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
