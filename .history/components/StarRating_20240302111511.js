@@ -1,0 +1,16 @@
+/* eslint-disable react/no-array-index-key */
+import React from 'react';
+import './global.css'; // Import the CSS file
+
+const StarRating = () => (
+  <div>
+    {[...Array(5)].map((_, stars) => (
+      <label key={stars}>
+        <input type="radio" name="rating" id={`starID-${stars}`} />
+        <span>⭐️</span>
+      </label>
+    ))}
+  </div>
+);
+
+export default StarRating;
