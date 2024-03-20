@@ -26,7 +26,7 @@ function Home() {
 
   useEffect(() => {
     getAllTheGames();
-  }, [user.uid, getAllTheGames]);
+  }, [user.uid]);
 
   return (
     <div className="text-center my-4">
