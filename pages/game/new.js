@@ -1,6 +1,5 @@
-/* eslint-disable import/no-unresolved */
 import React from 'react';
-import GameForm from '../../components/gameForm';
+import GameForm from '../../components/GameForm';
 
 export default function AddGame() {
   return <GameForm />;

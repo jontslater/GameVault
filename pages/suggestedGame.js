@@ -22,7 +22,7 @@ function Suggested() {
       const platformsData = await viewGameDetails(user.uid);
       setPlatforms(platformsData);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      // console.error('Error fetching data:', error);
     }
   };
 
