@@ -20,3 +20,6 @@ Game Vault - The ultimate app for gamers. Add, manage, and rate games you've pla
 4. Open http://localhost:3000 with your browser.
 
 
+![loginpage](https://github.com/user-attachments/assets/42faa8b2-4c1f-4536-b484-c540036aab21)
+![Home](https://github.com/user-attachments/assets/543ecec0-e00b-457b-ae8c-ceba0b8e547b)
+![GameCard](https://github.com/user-attachments/assets/f552dc06-b34e-499c-840b-1515d9714573)
