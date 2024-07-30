@@ -2,8 +2,8 @@
 Game Vault - The ultimate app for gamers. Add, manage, and rate games you've played or would like to play. 
 
 # Link to project: 
-[GameVault Repository](https://github.com/jontslater/GameVault)+
-[GameVault Deployed](https://gamestoragevault.netlify.app/)+
+[GameVault Repository](https://github.com/jontslater/GameVault)
+[GameVault Deployed](https://gamestoragevault.netlify.app/)
 
 # Features
 - Add and Edit Games: Easily manage games with intuitive forms.
